@@ -1,4 +1,4 @@
-
+package aa.sales;
 public class Customer {
 
 	int id;

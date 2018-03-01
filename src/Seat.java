@@ -1,4 +1,4 @@
-
+package aa.facility;
 public class Seat {
 	
 	int seatNumber;

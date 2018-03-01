@@ -1,3 +1,4 @@
+package aa.facility;
 import java.util.*;
 
 public class Theatre {
@@ -16,8 +17,11 @@ public class Theatre {
 	
 	public void createRows(int rowClass, int seatCount, int rowCount)
 	{
-		for (int i = 1; i <= rowCount; i++)
-		{
+		//code changed to make alphabet rows
+		/*for (int i = 65; i <= 90; i++) {
+    System.out.println((char)i);
+}*/
+		for (int i = 1; i <= rowCount; i++){
 			rows.add(new Row(rowClass, seatCount, i));
 		}
 		this.rowCount += rowCount;
