@@ -23,9 +23,9 @@ public class Cinema{
 	        	    testTheatre.createRows(1, 10, 7);
                 	theatres.add(testTheatre);
 					//addshows maybe can use multi thread?? add shows in multiple theatres
-					shows.add(new Show("Fantastic Beasts", "27.02.2018", theatres.get(0)));
-					shows.add(new Show("Black Panther", "28.02.2018", theatres.get(0)));
-                	shows.add(new Show("Avengers, Civil War", "26.02.2018", theatres.get(0)));
+					shows.add(new Show(1,"Fantastic Beasts", "27.02.2018", theatres.get(0)));
+					shows.add(new Show(2,"Black Panther", "28.02.2018", theatres.get(0)));
+                	shows.add(new Show(3,"Avengers, Civil War", "26.02.2018", theatres.get(0)));
 	            do
 	            {  
 	                System.out.println("------------------------------------");
@@ -62,6 +62,9 @@ public class Cinema{
 	                    {	                        
 	                    	System.out.println("ADD SHOW Selected");
 	                        System.out.println("-------------------------\n");
+	                        //add ID prompt
+	                        System.out.println("Enter show id (integer):");
+	                        Integer showID = Integer.parseInt(choice.nextLine());
 	                    	System.out.println("Enter the date of the Show [DD/MM/YYYY]:");
 	                        String showDate = choice.nextLine();
 	                        System.out.print("Enter name of Show: \n");
@@ -72,7 +75,8 @@ public class Cinema{
 	                        	System.out.println(i+1 + " " + theatres.get(i).getDescription());
 	                        }
 	                        int theatreNumber = choice.nextInt();
-	                        shows.add(new Show(showName, showDate, theatres.get(theatreNumber-1)));
+	                        //add id to create show
+	                        shows.add(new Show(showID,showName, showDate, theatres.get(theatreNumber-1)));
 	                    }
 	                    
 	                    
