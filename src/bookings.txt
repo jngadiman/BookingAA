@@ -1,0 +1,12 @@
+Fantastic Beasts,D4
+Harry Potter,D5
+Fantastic Beasts,F5
+Fantastic Beasts,D6
+Harry Potter,D7
+Fantastic Beasts,A5
+Fantastic Beasts,C4
+Harry Potter,A5
+Fantastic Beasts,B2
+Fantastic Beasts,B4
+Harry Potter,C5
+Fantastic Beasts,C1

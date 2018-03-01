@@ -1,8 +1,13 @@
+package aa;
+import aa.sales.*;
+import aa.facility.*;
+import java.nio.file.*;
+import java.io.*;
 import java.util.*;
 	 
-public class Cinema
-{	
-	        public static void main (String[] args)
+public class Cinema{	
+	        //third party main display code
+			public static void main (String[] args)
 	        {
 	                int option = 0;
 	                ArrayList<Show >shows = new ArrayList<Show>();
@@ -12,16 +17,21 @@ public class Cinema
 	                Scanner select = new Scanner(System.in);
 	                Scanner choice = new Scanner(System.in);
 	                
-		        	//Test Objects
+		        	//Created our own Test Objects
+					//maybe dont need theatre
 	        	    Theatre testTheatre = new Theatre(1, "Main Theatre");
 	        	    testTheatre.createRows(1, 10, 7);
                 	theatres.add(testTheatre);
-                	shows.add(new Show("Der SpongeBob Schwammkopf - Film", "21.10.2011", theatres.get(0)));
+					//addshows maybe can use multi thread?? add shows in multiple theatres
+					shows.add(new Show("Fantastic Beasts", "27.02.2018", theatres.get(0)));
+					shows.add(new Show("Black Panther", "28.02.2018", theatres.get(0)));
+                	shows.add(new Show("Avengers, Civil War", "26.02.2018", theatres.get(0)));
 	            do
 	            {  
 	                System.out.println("------------------------------------");
 	                System.out.println(":Cinema Booking System by BS and KU:");
 	                System.out.println("------------------------------------\n");
+					//maybe can remove add theatre
 	                System.out.println("Please Enter 1 to Add Theatre");
 	                System.out.println("Please Enter 2 to Add Show");
 	                System.out.println("Please Enter 3 to Display Shows");
@@ -104,13 +114,21 @@ public class Cinema
 	                        int showNumber = choice.nextInt();
 	                        int repeat = 0;
 	                        System.out.println();
+							
 	                        do {
 	                        	shows.get(showNumber-1).getTheatre().printSeatPlan();
 	                        	System.out.print("Enter the row: ");
 	                        	int selectedRow = choice.nextInt();
 	                        	System.out.print("Enter the seat: ");
 	                        	int selectedSeat = choice.nextInt();
-	                        	System.out.println();
+								//new codes
+								/*System.out.print("Enter file of bookings: ");
+	                        	String filename = choice.nextLine();
+								List<String []> bookings = readBookings(filename);
+								for(String[] booking:bookings){
+									String show = booking[0];
+									String seat = booking[1]
+								}*/
 	                        	Booking booking = new Booking(customer, shows.get(showNumber-1));
 	                        	if (booking.reserveSeat(selectedRow-1, selectedSeat-1)) {
 	                        		bookings.add(booking);
@@ -158,7 +176,7 @@ public class Cinema
 	                        				}
 	                        			}
 	                        		}
-	                        		System.out.println("Your reservation has been canceled!");
+	                        		System.out.println("Your reservation has been cancelled!");
 	                        	}
 	                        }
 	                        System.out.println();
@@ -170,5 +188,17 @@ public class Cinema
 	                    }
 	                                                                	                                	                                	                               
 	              }while(true);	       
-	        }	        
+	        }
+
+ //ADDED A NEW METHOD TO GET THE TXT FILE
+ 
+ public static List<String []> readBookings(String fileName) throws IOException {
+        ArrayList<String []> bookings = new ArrayList<String []>();
+        Files.lines(Paths.get(fileName))
+                .forEach(line -> {
+					
+                    bookings.add(line.split("\\r\\n|\\n|\\r|,"));
+                });
+        return bookings;
+    }	        
 }
