@@ -61,13 +61,14 @@ public class Cinema{
 	                    if(option==2)
 	                    {	                        
 	                    	System.out.println("ADD SHOW Selected");
-	                        System.out.println("-------------------------\n");
-	                        //add ID prompt
+	                        System.out.println("-------------------------");
+	                        //add show id
 	                        System.out.println("Enter show id (integer):");
-	                        Integer showID = Integer.parseInt(choice.nextLine());
+	                        int showID = choice.nextInt();
+	                        choice.nextLine();
 	                    	System.out.println("Enter the date of the Show [DD/MM/YYYY]:");
 	                        String showDate = choice.nextLine();
-	                        System.out.print("Enter name of Show: \n");
+	                        System.out.print("Enter name of Show:");
 	                        String showName = choice.nextLine();	
 	                        System.out.println("Select a theatre by typing the number:");
 	                        for (int i=0; i < theatres.size(); i++) 
